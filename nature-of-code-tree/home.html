@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Crimson+Text&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home-page</title>
+  <link rel="stylesheet" href="2style.css" />
+</head>
+<body>
+  <main>
+    <h1>The Nature of Code</h1>
+    <p>
+      Die Aufgabe besteht darin, Muster, Verhaltensweisen und Systeme in der Natur genau zu beobachten. 
+      Ich habe beobachtet, wie die Ringen eines Baums aussehen. 
+      Dazu habe ich eine kurze Animation gebaut, jeder Ring beschreibt ein Jahr des Baums.
+    </p>
+
+    <div class="image-row">
+      <div class="card">
+        <img src="Tree+rings-+LaurieKehler.jpg" alt="Tree Rings" />
+      </div>
+      <div class="card">
+        <img src="kid-ring.jpg" alt="Child Holding Ring" />
+      </div>
+    </div>
+    <p> 1. Wie es funktioniert: Am Anfang definiere ich einige Variablen:
+
+        rings ist eine Liste, in der alle Baumringe gespeichert werden.
+    
+        *numRings* gibt an, wie viele Ringe entstehen sollen.
+    
+        maxRadius bestimmt, wie groß der äußerste Ring wird.
+    
+        Mit currentRing verfolge ich, welcher Ring gerade gezeichnet wird.
+    
+        hasStarted steuert, ob der Sketch schon gestartet wurde.
+    
+    Im setup()-Teil erstelle ich das Canvas und stelle sicher, dass alles richtig initialisiert ist.
+    Wichtig ist hier: Ich verwende noLoop(), damit der Sketch nicht ständig neu gezeichnet wird – das mache ich manuell.
+    Außerdem verknüpfe ich einen Start-Button, damit der Nutzer die Animation selbst starten kann.
+      </p>
+      <p>2.Die draw()-Funktion: So wachsen die Ringe.
+
+        Sobald man den Button klickt, wird hasStarted auf true gesetzt, und dann beginnt die Zeichnung im draw().
+        
+        Pro Frame wird ein Ring erzeugt, der mit Perlin Noise unregelmäßig geformt ist – also nicht perfekt rund, sondern organisch.
+         So sieht es natürlicher aus. Alle bereits erzeugten Ringe werden ebenfalls jedes Mal angezeigt.</p>
+    <p>3. Wenn alle Ringe gezeichnet sind, stoppt der Loop erneut.
+            An jedem Punkt des äußersten Rings wird noch die außere Seite des Baums gezeichnet.
+            
+            Dazu benutze ich eine rekursive Funktion namens drawTree() – sie zeichnet einen Ast, der sich immer wieder teilt.</p>
+    <p>4. Die Klasse Ring: natürliche Formen mit Noise.
+
+        Jeder Ring ist eine eigene Instanz der Klasse Ring.
+        
+        Dort wird ein Kreis erzeugt, aber der Radius wird mit Perlin Noise verändert – das ergibt Unregelmäßigkeiten, wie bei echten Baumringen.
+        Statt einem perfekten Kreis entstehen Formen, die wirken, als wären sie natürlich gewachsen. </p>
+        <p>5. Die Funktion drawTree(): fraktales Wachstum
+
+            Die kleinen Bäume werden durch eine rekursive Funktion erzeugt.
+            Sie zeichnet einen Hauptast, und dann zwei kleinere Äste, die sich im Winkel unterscheiden.
+            Das Ganze wiederholt sich mehrere Male – dadurch entsteht fraktales Wachstum, das wir bei echten Bäumen oder Pflanzen finden.</p>
+    <p> Last and least:
+        6. Fensteranpassung & Bedienung.
+        Wenn das Fenster neu geladen oder in der Größe verändert wird, passt sich das Canvas automatisch an. So bleibt das Ganze auf allen Geräten gut sichtbar.
+    </p>
+
+    <a href="index.html" class="home">zum Ergebniss</a>
+
+    <script src="./modules/p5/lib/p5.min.js"></script>
+  </main>
+</body>
+</html>
